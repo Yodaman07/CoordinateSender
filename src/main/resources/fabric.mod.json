@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "coord-sender",
+  "version": "${version}",
+  "name": "Coord Sender",
+  "description": "A client side mod to help you easily send your coordinates",
+  "authors": [
+    "Legobrosbuild"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/coord-sender/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "legobrosbuild.coordsender.client.CoordSenderClient"
+    ],
+    "main": [
+      "legobrosbuild.coordsender.CoordSender"
+    ]
+  },
+  "mixins": [
+    "coord-sender.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
