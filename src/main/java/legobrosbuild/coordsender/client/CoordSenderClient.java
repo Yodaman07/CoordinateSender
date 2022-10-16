@@ -6,10 +6,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.util.math.Vector3d;
-import net.minecraft.entity.Entity;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 
 
 @Environment(EnvType.CLIENT)
@@ -19,14 +15,13 @@ public class CoordSenderClient implements ClientModInitializer {
         ClientCommandManager.DISPATCHER.register(
             ClientCommandManager.literal("coords")
                 .executes(context -> {
-
                     ClientPlayerEntity player = context.getSource().getClient().player;
-
                     assert player != null;
                     Vector3d coords = new Vector3d(player.getBlockX(), player.getBlockY(), player.getBlockZ());
                     String pos = coords.x + ", " + coords.y + ", " + coords.z;
-                    final Text text = new LiteralText(player.getEntityName() + ": " + pos).formatted(Formatting.AQUA);
-                    player.sendMessage(text, false);
+//                    final Text text = new LiteralText(player.getEntityName() + ": " +pos).formatted(Formatting.AQUA);
+//                      for colors ^. Only with servers
+                    player.sendChatMessage(pos);
                     return 1;
                 })
         );
